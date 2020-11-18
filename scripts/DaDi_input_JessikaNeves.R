@@ -5,7 +5,9 @@
 ###   November 2020  ###
 ###                  ###
 ########################
-##
+#
+#This script was developed under the dartR version 1.1.6 available at https://cran.r-project.org/src/contrib/Archive/dartR/
+#
 ##Producing a dataset to run DaDi
 ##As the analysis requeires one dataset per species, it is needed to filter by species before the other filters
 #
