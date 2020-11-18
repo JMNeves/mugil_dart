@@ -13,6 +13,7 @@
 #
 #Load the packages
 library(dartR)
+library(radiator)
 #
 ###Open the dart file###
 #
