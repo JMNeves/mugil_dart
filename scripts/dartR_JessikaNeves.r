@@ -437,17 +437,17 @@ gl2treemix(dart_5pop, outfile = "treemix_input.gz", outpath = tempdir(),v = 2)
 #Set of data filtered only for reproducibility: all
 #Use this set to filter by 0% missing data
 all
-0MD_inva <- gl.filter.callrate(all, method = "loc", threshold = 1.0, mono.rm = F, recalc = F, plot = F, v = 2)
-0MD_inva
+MD0_inva <- gl.filter.callrate(all, method = "loc", threshold = 1.0, mono.rm = F, recalc = F, plot = F, v = 2)
+MD0_inva
 #Then filter by paralogs
-0MD_inva_trim<- gl.filter.hamming(0MD_inva, threshold=0.2, pb=T, v=5)
-0MD_inva_trim
+MD0_inva_trim<- gl.filter.hamming(MD0_inva, threshold=0.2, pb=T, v=5)
+M0D_inva_trim
 ##saving te matrix##
-gl.write.csv(0MD_inva_trim, outfile = "arlequin_0MD_trim.csv")
+gl.write.csv(MD0_inva_trim, outfile = "arlequin_0MD_trim.csv")
 #Preparing files with the fragments, randomly designating the bases of heterozygous sites
-gl2fasta(0MD_inva_trim, method=2, outfile="0MD_inva.fasta")
+gl2fasta(M0D_inva_trim, method=2, outfile="0MD_inva.fasta")
 #It is also possible to create a fasta file with ambiguity codes and use the phase function at DNAsp
-gl2fasta(0MD_inva_trim, method=1, outfile="0MD_inva_amb.fasta")
+gl2fasta(MD0_inva_trim, method=1, outfile="0MD_inva_amb.fasta")
 #Use this dataset in arlquin software.
 ##
 ####################################################
@@ -537,13 +537,13 @@ nPop(all_0MD)	#considering M. curema and M. incilis separated and the two popula
 gl.report.heterozygosity(dart_5pop)
 gl.report.heterozygosity(dart_6pop)
 ##Expected heterozysosity
-#First need to convert to genind 
+#First needs to convert to genind 
 dart_5pop_gi<-gl2gi(dart_5pop, v = 1)
 dart_6pop_gi<-gl2gi(dart_6pop, v = 1)
 #And then calculate with adegenet
 library(adegenet)
-Hs(dart5pop_gi)
-Hs(dart6pop_gi)
+Hs(dart_5pop_gi)
+Hs(dart_6pop_gi)
 ##
 #######################################################################################################
 #
