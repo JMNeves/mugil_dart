@@ -11,8 +11,15 @@
 ##Producing a dataset to run DaDi
 ##As the analysis requeires one dataset per species, it is needed to filter by species before the other filters
 #
+#Load the packages
 library(dartR)
-library(radiator)
+#
+###Open the dart file###
+#
+setwd(choose.dir())
+#
+###The following command opens the csv file and converts it to gl###
+dart<- gl.read.dart(filename = "mugil_dart_singlerow.csv", ind.metafile = "metrics_6sp.csv")
 ##
 ############################################
 ############ Mugil brevirostris ############
