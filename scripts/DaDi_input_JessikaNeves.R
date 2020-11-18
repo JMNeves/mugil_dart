@@ -174,7 +174,7 @@ tidy_liza_0MD<-vcf_liza_0MD$tidy.data
 write.matrix(tidy_liza_0MD,"~/dartr/liza/tidy_liza_0MD.txt")
 ##
 ##
-##Convert the files into DaDi’s format (.snp) using the python script available at https://github.com/CoBiG2/RAD_Tools/blob/master/vcf2DaDi.py. 
+##Convert the VCF files into DaDi’s format (.snp) using the python script available at https://github.com/CoBiG2/RAD_Tools/blob/master/vcf2DaDi.py. 
 #
 #################################################################################################################################################
 #
