@@ -238,6 +238,7 @@ pop(MD0_6sp_ok)
 ############
 #   PCoA   #
 ############
+#run the script "PCoA_color_JessikaNeves.R" before this step
 pc_0MD33 <- gl.pcoa(MD0_6sp_ok, nfactors=5)
 #Plot 1x2
 gl.pcoa.plot(pc_0MD33,MD0_6sp_ok, ellipse = FALSE, p = 0.95,labels = "none", hadjust = 1.5, vadjust = 1, xaxis = 1,yaxis = 2)+
@@ -288,6 +289,7 @@ pop(MD20_6sp_ok)
 ############
 #   PCoA   #
 ############
+#run the script "PCoA_color_JessikaNeves.R" before this step
 pc_20MD33 <- gl.pcoa(MD20_6sp_ok, nfactors=5)
 #Plot 1x2
 library(ggplot2)
@@ -326,6 +328,7 @@ pop(MD40_6sp_ok)
 ############
 #   PCoA   #
 ############
+#run the script "PCoA_color_JessikaNeves.R" before this step
 pc_40MD33 <- gl.pcoa(MD40_6sp_ok, nfactors=5)
 #Plot 1x2
 gl.pcoa.plot(pc_40MD33,MD40_6sp_ok, ellipse = FALSE, p = 0.95,labels = "none", hadjust = 1.5, vadjust = 1, xaxis = 1,yaxis = 2)+
