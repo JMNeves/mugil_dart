@@ -2,11 +2,12 @@
 ###                           ###
 ### Changing PCOA plot colors ###
 ###      By Jessika Neves     ###
-###        November 2020      ###
+###         March 2021        ###
 ###                           ###
 #################################
 #
 #This script was developed under the dartR version 1.1.6 available at https://cran.r-project.org/src/contrib/Archive/dartR/
+#Run this function before run the main script
 #
 #Load the packages
 library(dartR)
@@ -47,7 +48,7 @@ gl.pcoa.plot <- function(glPca, data, scale=FALSE, ellipse=FALSE, p=0.95, labels
     
     # Plot
     p <- ggplot(df, aes(x=df$PCoAx, y=df$PCoAy,colour=pop)) +
-      geom_point(shape=1, size=2,colour=c("darkorange2", "deepskyblue2", "darkviolet","darkorchid1", "deeppink2", "chartreuse3", "blue2")[pop],aes(colour=pop)) +
+      geom_point(shape=1, size=5,colour=c("darkorange2", "deepskyblue2", "darkviolet","darkorchid1", "deeppink2", "chartreuse3", "blue2")[pop],aes(colour=pop)) +
       #geom_dl(aes(label=ind),method="first.points") +
       #ggtitle(paste("PCoA Plot")) +
       theme(axis.title=element_text(face="bold.italic",size="20", color="black"),
@@ -68,15 +69,6 @@ gl.pcoa.plot <- function(glPca, data, scale=FALSE, ellipse=FALSE, p=0.95, labels
   
   return (p)
 }
-#plot PCoA
-#PCoA#
-pc_0MD <- gl.pcoa(all_0MD, nfactors=5)
-#Plot 1x2
-gl.pcoa.plot(pc_0MD,all_0MD, ellipse = FALSE, p = 0.95,labels = "none", hadjust = 1.5, vadjust = 1, xaxis = 1,yaxis = 2)+
-theme_bw()+coord_fixed(ratio = 1)
-#Plot 3x4
-gl.pcoa.plot(pc_0MD,all_0MD, ellipse = FALSE, p = 0.95,labels = "none", hadjust = 1.5, vadjust = 1, xaxis = 3,yaxis = 4)+
-theme_bw()+coord_fixed(ratio = 1)
 ###############################################################################################################################
 #
 #jessika.neves@icbs.ufal.br
