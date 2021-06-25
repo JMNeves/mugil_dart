@@ -227,6 +227,13 @@ nPop(dart_5pop193)
 pop(dart_5pop193)
 #2. convert
 gl2treemix(dart_5pop193, outfile = "treemix_input193.gz", outpath = "~/treemix",v = 2)
+########################
+# Allele richness (Ar) #
+########################
+library(adegenet)
+alrc<-gl2gi(dart_5pop193)
+library(PopGenReport)
+allel.rich(alrc, min.alleles = NULL)
 #################################################################
 #Rename individuals according to morphology to the next analyses
 #################################################################
@@ -238,13 +245,6 @@ MD0_6sp <-gl.define.pop(MD0_6sp_33, ind.list=c("M_rubr_SA_074","M_rubr_SA_075","
 pop(MD0_6sp)
 MD0_6sp_ok <-gl.define.pop(MD0_6sp, ind.list=c("M_cure_MB_203"), new="cure_SA")
 pop(MD0_6sp_ok)
-########################
-# Allele richness (Ar) #
-########################
-library(adegenet)
-alrc<-gl2gi(dart_5pop193)
-library(PopGenReport)
-allel.rich(alrc, min.alleles = NULL)
 ############
 #   PCoA   #
 ############
