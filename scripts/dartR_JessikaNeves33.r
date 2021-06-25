@@ -461,7 +461,7 @@ gl2fasta(MD0_33_1SNP, method=1, outfile="phylo_0MD33_DNAsp.fasta")
 #outputs the data in a form suitable for input to the Phylip package written by Joseph Felsenstein
 #(http://evolution.genetics.washington.edu/phylip.html) (Felsenstein, 1989). The input file can include replicated
 #distance matrices for the purpose of bootstrapping.
-phy <- gl2phylip(all_60_40_hwe_trim, outfile="dist_all_60_40_hwe_trim.phy", bstrap=1000)
+phy <- gl2phylip(MD0_33_1SNP, outfile="dist_MD0_33_1SNP.phy", bstrap=1000)
 ##
 ################   SNPRelate   ################
 ##
