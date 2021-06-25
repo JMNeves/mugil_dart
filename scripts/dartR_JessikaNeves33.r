@@ -195,7 +195,8 @@ MD0_semliza_1SNP
 #
 ##########################
 #         6sp_0MD        #
-#  heatmap, FST, TreeMix #
+# heatmap, FST, TreeMix, #
+# allele richness (Ar),  #
 # PCoA, STRUCTURE, RAxML #
 ##########################
 MD0_33_1SNP
@@ -208,6 +209,8 @@ gl.plot(heat0MD, col=c("DeepSkyBlue", "DeepPink1", "Gold"), legend = F)
 #    Fst   #
 ############
 library(StAMPP)
+stamppFst(MD0_33_1SNP, nboots=1, percent=95, nclusters=1)
+#show Fst and p-value. The next command round Fst to 3 decimal places
 fst_MD0_33 <-stamppFst(MD0_33_1SNP, nboots=1, percent=95, nclusters=1)
 round(fst_MD0_33,3)
 ############
@@ -235,6 +238,13 @@ MD0_6sp <-gl.define.pop(MD0_6sp_33, ind.list=c("M_rubr_SA_074","M_rubr_SA_075","
 pop(MD0_6sp)
 MD0_6sp_ok <-gl.define.pop(MD0_6sp, ind.list=c("M_cure_MB_203"), new="cure_SA")
 pop(MD0_6sp_ok)
+########################
+# Allele richness (Ar) #
+########################
+library(adegenet)
+alrc<-gl2gi(dart_5pop193)
+library(PopGenReport)
+allel.rich(alrc, min.alleles = NULL)
 ############
 #   PCoA   #
 ############
@@ -388,30 +398,46 @@ gl2structure(curv_33_ok, outfile = "curvidens33_0MD33_struc.str",  exportMarkerN
 ##########################
 #Use the alignment MD0_33_1SNP to separate by species, recalculating metrics.
 ###
+library(hierfstat)
 #brevirostris
 brev_stat <- gl.keep.pop(MD0_33_1SNP,recalc=TRUE,mono.rm = FALSE, pop.list=c("brev_SA"))
 brev_stat
-gl.basic.stats(brev_stat)
+brev_gi<-gl2gi(brev_stat) #Converts a genlight object to genind object
+basic.stats(brev_gi,diploid=TRUE,digits=4) #calculates basic statistics
+boot.ppfis(dat=brev_gi,nboot=100) #calculates Fis confidence intervals
 ###
 #curema
 cure_stat <- gl.keep.pop(MD0_33_1SNP,recalc=TRUE, mono.rm = FALSE, pop.list=c("cure_SA","inci_SA"))
-cure_stat
-gl.basic.stats(cure_stat)
+cure_stat2<-gl.define.pop(cure_stat, ind.list=c("M_inci_SA_045","M_inci_SA_182"), new="cure_SA") #reassingment of the individuals
+cure_stat2
+cure_gi<-gl2gi(cure_stat2) #Converts a genlight object to genind object
+basic.stats(cure_gi,diploid=TRUE,digits=4) #calculates basic statistics
+boot.ppfis(dat=cure_gi,nboot=100) #calculates Fis confidence intervals
 ###
 #curvidens
 curv_stat <- gl.keep.pop(MD0_33_1SNP,recalc=TRUE, mono.rm = FALSE, pop.list=c("curv_SA","curv_MB"))
-curv_stat
-gl.basic.stats(curv_stat)
+curv_stat2<-gl.define.pop(curv_stat, ind.list=c("M_curv_MB_163","M_curv_MB_165",
+"M_curv_MB_187","M_curv_MB_189","M_curv_MB_190","M_curv_MB_192","M_curv_MB_193",
+"M_curv_MB_194","M_curv_MB_195","M_curv_MB_197","M_curv_MB_198","M_curv_MB_199",
+"M_curv_MB_201","M_curv_MB_204","M_curv_MB_203"), new="curv_SA") #reassingment of the individuals
+curv_stat2
+curv_gi<-gl2gi(curv_stat2) #Converts a genlight object to genind object
+basic.stats(curv_gi,diploid=TRUE,digits=4) #calculates basic statistics
+boot.ppfis(dat=curv_gi,nboot=100) #calculates Fis confidence intervals
 ###
 #liza
 liza_stat <- gl.keep.pop(MD0_33_1SNP,recalc=TRUE, mono.rm = FALSE, pop.list=c("liza_SA"))
 liza_stat
-gl.basic.stats(liza_stat)
+liza_gi<-gl2gi(liza_stat) #Converts a genlight object to genind object
+basic.stats(liza_gi,diploid=TRUE,digits=4) #calculates basic statistics
+boot.ppfis(dat=liza_gi,nboot=100) #calculates Fis confidence intervals
 ###
 #rubrioculus
 rubr_stat <- gl.keep.pop(MD0_33_1SNP,recalc=TRUE, mono.rm = FALSE, pop.list=c("rubr_SA"))
 rubr_stat
-gl.basic.stats(rubr_stat)
+rubr_gi<-gl2gi(rubr_stat) #Converts a genlight object to genind object
+basic.stats(rubr_gi,diploid=TRUE,digits=4) #calculates basic statistics
+boot.ppfis(dat=rubr_gi,nboot=100) #calculates Fis confidence intervals
 ##########################
 #          DNAsp         #
 #  θ, π and Tajima's D   #
